@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import GuessNumber from './components/GuessNumber.vue'
-
 </script>
 
 <template>
