@@ -37,7 +37,7 @@ function newGame(){
 
   <h1>{{currentText}}</h1>
   <div v-if="secretText==currentText">
-    Løst! <button @click="newGame()">Nytt spill</button>
+    Løst! <button @click="newGame()">New game!</button>
   </div>
     <input type="text" v-model="guessedLetter" maxlength="1" placeholder="Write only one letter"/>
     <button @click="guess()">Guess</button>
