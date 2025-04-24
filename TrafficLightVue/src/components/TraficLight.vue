@@ -3,6 +3,8 @@ import { ref } from 'vue'
 
 defineProps<{ text: string }>()
 
+const colors : string[][] = [[gray, gray, green], [gray, yellow, gray], [red, gray, gray], [red, yellow, gray]]
+
 
 
 function showGreen() {
