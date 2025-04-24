@@ -7,6 +7,13 @@ const secretText = ref<string>('TEE')
 const currentText = ref<string>('___')
 const guessedLetter = ref<string>('')
 
+function onInput(event: Event){
+  const target = event.target as HTMLInputElement | null
+  if(target){
+    guessedLetter.value = target.value.toUpperCase()
+  }
+}
+
 
 function guess(){
   currentText.value = evaluateHangman(secretText.value, currentText.value, guessedLetter.value);
@@ -39,7 +46,7 @@ function newGame(){
   <div v-if="secretText==currentText">
     Løst! <button @click="newGame()">New game!</button>
   </div>
-    <input type="text" v-model="guessedLetter" maxlength="1" placeholder="Write only one letter"/>
+    <input type="text" :value="guessedLetter" @input="onInput" maxlength="1" placeholder="Write only one letter"/>
     <button @click="guess()">Guess</button>
 
   
