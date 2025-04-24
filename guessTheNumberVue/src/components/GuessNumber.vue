@@ -12,7 +12,9 @@ function newGame(){
 }
 
 function getText(){
-  if(guessNumber.value! < secretNumber.value){
+  if(guessNumber.value == null){
+    return "Make your guess"
+  } else if(guessNumber.value! < secretNumber.value){
     return 'To Low'
   } else if(guessNumber.value! > secretNumber.value){
     return 'To High'
