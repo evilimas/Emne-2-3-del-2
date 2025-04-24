@@ -8,24 +8,33 @@ const guessNumber = ref<number | null>(null)
 
 function newGame(){
   secretNumber.value = Math.ceil(Math.random() * 100)
+  guessNumber.value = null
+}
+
+function getText(){
+  if(guessNumber.value! < secretNumber.value){
+    return 'To Low'
+  } else if(guessNumber.value! > secretNumber.value){
+    return 'To High'
+  } else{
+    return 'You are correct'
+  }
 }
 </script>
 
 <template>
-  <h2>{{text}}</h2>
-  <p>
-    {{ secretNumber }}
-  </p>
-  <p>
-    Your guess {{ guessNumber }}
-  </p>
-  <p v-if="guessNumber < secretNumber">To Low</p>
-  <p v-else-if="guessNumber > secretNumber">To High</p>
-  <p v-else>You are correct</p>
-  
-  <!-- <button @click="guess()">Tipp</button>       -->
-  <input type="number" v-model.number="guessNumber" />
-  <button @click="newGame()">Start new game</button>  
+  <div>
+    <h2>{{text}}</h2>
+    <p>
+      {{ secretNumber }}
+    </p>
+    <p>
+      Your guess {{ guessNumber }}
+    </p>
+    <p>{{ getText() }}</p>
+    <input type="number" v-model.number="guessNumber" />
+    <button @click="newGame()">Start new game</button>  
+  </div>
 </template>
 
 <style scoped>

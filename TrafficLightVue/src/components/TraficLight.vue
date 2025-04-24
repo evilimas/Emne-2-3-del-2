@@ -7,7 +7,7 @@ defineProps<{ text: string }>()
 
 function showGreen() {
             return /*HTML*/`
-                <div class="yellow" id="trafficLight" @click="showYellow()">
+                <div id="trafficLight" @click="showYellow()">
                     <div class="light" style="background-color: gray;"></div>
                     <div class="light" style="background-color: gray;"></div>
                     <div class="light" style="background-color: green;"></div>            
@@ -17,7 +17,7 @@ function showGreen() {
 
         function showYellow() {
             return /*HTML*/`
-                <div class="red" id="trafficLight" @click="showRed()">
+                <div id="trafficLight" @click="showRed()">
                     <div class="light" style="background-color: gray;"></div>
                     <div class="light" style="background-color: yellow;"></div>
                     <div class="light" style="background-color: gray;"></div>            
@@ -27,7 +27,7 @@ function showGreen() {
 
         function showRed() {
             return /*HTML*/`
-                <div class="red-yellow" id="trafficLight" @click="showRedYellow()">
+                <div id="trafficLight" @click="showRedYellow()">
                     <div class="light" style="background-color: red;"></div>
                     <div class="light" style="background-color: gray;"></div>
                     <div class="light" style="background-color: gray;"></div>            
@@ -37,7 +37,7 @@ function showGreen() {
 
         function showRedYellow() {
             return /*HTML*/`
-                <div class="green" id="trafficLight" @click="showGreen()">
+                <div id="trafficLight" @click="showGreen()">
                     <div class="light" style="background-color: red;"></div>
                     <div class="light" style="background-color: yellow;"></div>
                     <div class="light" style="background-color: gray;"></div>            
@@ -52,9 +52,11 @@ function showGreen() {
   <div>
     <h1>{{ text }}</h1>
     <div>
-      <div>
-
-      </div>
+      <div class="yellow" id="trafficLight" @click="showYellow()">
+                    <div class="light" style="background-color: gray;"></div>
+                    <div class="light" style="background-color: gray;"></div>
+                    <div class="light" style="background-color: green;"></div>            
+                </div>
 
 
     </div>
