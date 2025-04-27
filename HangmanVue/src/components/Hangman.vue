@@ -34,22 +34,20 @@ function evaluateHangman(secretText : string, currentText : string, guessedLette
 function newGame(){
   secretText.value = 'COP'
   currentText.value = '___'
-
 }
 
 </script>
 
 <template>
+
   <h1>{{ msg }}</h1>
 
   <h1>{{currentText}}</h1>
   <div v-if="secretText==currentText">
     Løst! <button @click="newGame()">New game!</button>
   </div>
-    <input type="text" :value="guessedLetter" @input="onInput" maxlength="1" placeholder="Write only one letter"/>
-    <button @click="guess()">Guess</button>
-
-  
+  <input type="text" :value="guessedLetter" @input="onInput" maxlength="1" placeholder="Write only one letter"/>
+  <button @click="guess()">Guess</button>
 </template>
 
 <style scoped>
