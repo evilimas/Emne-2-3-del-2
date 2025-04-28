@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 
+interface toDo {
+  id: number;
+  text: string;
+  checked: boolean;
+}
+
 const _todo_text = ref(''),
-  _todo_list = ref([]),
+  _todo_list = ref<toDo[]>([]),
   _pending = computed(() => {
     return _todo_list.value.filter((item) => !item.checked);
   }),
