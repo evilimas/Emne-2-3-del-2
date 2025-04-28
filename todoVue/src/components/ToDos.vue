@@ -1,20 +1,22 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 
-interface toDo {
+interface ToDo {
   id: number;
   text: string;
   checked: boolean;
 }
+type FilterFunction = (isFinished: boolean, todoList: ToDo[]) => () => ToDo[];
 
-const _todo_text = ref(''),
-  _todo_list = ref<toDo[]>([]),
-  _pending = computed(() => {
-    return _todo_list.value.filter((item) => !item.checked);
-  }),
-  _done = computed(() => {
-    return _todo_list.value.filter((item) => item.checked);
-  });
+const _todo_text = ref('');
+const _todo_list = ref<ToDo[]>([]);
+
+const filterTodos: FilterFunction = (isFinished, todoList) => () =>
+  todoList.filter((item: ToDo) => item.checked == isFinished);
+
+const _pending = computed(filterTodos(false, _todo_list.value));
+
+const _done = computed(filterTodos(true, _todo_list.value));
 
 function clearToDo() {
   _todo_text.value = '';
