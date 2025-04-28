@@ -94,4 +94,7 @@ label {
   cursor: pointer;
   display: flex;
 }
+button {
+  margin: 1em;
+}
 </style>
