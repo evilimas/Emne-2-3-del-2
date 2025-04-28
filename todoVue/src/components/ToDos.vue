@@ -32,6 +32,9 @@ function addToDo() {
     clearToDo();
   }
 }
+function deleteTodo(id: number) {
+  _todo_list.value = _todo_list.value.filter((todo) => todo.id !== id);
+}
 </script>
 
 <template>
@@ -55,10 +58,10 @@ function addToDo() {
         @keyup.enter="addToDo()"
         placeholder="Type here your to-do item..."
       />
-      <button class="w3-button w3-gray" @click="clearToDo()">
+      <button class="w3-button w3-gray main" @click="clearToDo()">
         <i class="fa-solid fa-times"></i>
       </button>
-      <button class="w3-button w3-blue" @click="addToDo()">
+      <button class="w3-button w3-blue main" @click="addToDo()">
         <i class="fa-solid fa-plus"></i>
       </button>
       <div class="w3-padding w3-blue">Pending ({{ _pending.length }})</div>
@@ -67,6 +70,7 @@ function addToDo() {
           <input type="checkbox" v-model="todo.checked" />
           <span class="w3-margin-left">
             {{ todo.text }}
+            <button @click="deleteTodo(todo.id)">x</button>
           </span>
         </label>
       </div>
@@ -77,6 +81,7 @@ function addToDo() {
           <input type="checkbox" v-model="todo.checked" />
           <span class="w3-margin-left">
             {{ todo.text }}
+            <button @click="deleteTodo(todo.id)">x</button>
           </span>
         </label>
       </div>
@@ -94,7 +99,7 @@ label {
   cursor: pointer;
   display: flex;
 }
-button {
+.main {
   margin: 1em;
 }
 </style>
