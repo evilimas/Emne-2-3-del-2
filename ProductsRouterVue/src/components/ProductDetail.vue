@@ -4,7 +4,7 @@
       <h1>{{ product.name }}</h1>
       <p>Pris: {{ product.price }}</p>
       <p>Details: {{ product.description }}</p>
-      <button @click="router.push('/product')">Back to products list</button>
+      <button @click="router.push('/products')">Back to products list</button>
       <button @click="goToNextProduct">Next product</button>
     </div>
     <p v-else>Product does not exist</p>
@@ -13,16 +13,16 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { getProductById } from '../products';
 import type { Product } from '../products';
 
-const route = useRoute();
+const props = defineProps<{ id: string }>();
 const router = useRouter();
 const product = ref<Product | undefined>();
 
 watch(
-  () => route.params.id,
+  () => props.id,
   (id) => {
     product.value = getProductById(parseInt(id as string));
   },

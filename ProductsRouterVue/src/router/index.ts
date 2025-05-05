@@ -1,8 +1,10 @@
-// import { createRouter } from 'vue-router';
-
 import ProductDetail from '../components/ProductDetail.vue';
 import ProductsList from '../components/ProductsList.vue';
 import { createWebHistory, createRouter } from 'vue-router';
+
+export interface RouteParams {
+  id: string;
+}
 
 const router = createRouter({
   history: createWebHistory(),
