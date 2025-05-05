@@ -2,8 +2,10 @@
   <main>
     <div>
       <h1>{{ product?.name }}</h1>
-      <p>{{ product?.price }}</p>
-      <p>{{ product?.description }}</p>
+      <p>Pris: {{ product?.price }}</p>
+      <p>Details: {{ product?.description }}</p>
+      <button @click="router.push('/product')">Back to products list</button>
+      <button @click="goToNextProduct">Next product</button>
     </div>
   </main>
 </template>
@@ -15,8 +17,17 @@ import { products, getProductById } from '../products';
 
 const route = useRoute();
 const router = useRouter();
-const id = parseInt(route.params.id);
-const product = getProductById(id);
+
+const product = ref();
+
+watch(
+  () => route.params.id,
+  (id) => {
+    product.value = getProductById(id);
+  }
+);
+
+function goToNextProduct() {}
 </script>
 
 <style></style>

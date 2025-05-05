@@ -2,17 +2,17 @@
 
 import ProductDetail from '../components/ProductDetail.vue';
 import ProductsList from '../components/ProductsList.vue';
+import { createWebHistory, createRouter } from 'vue-router';
 
 const router = createRouter({
+  history: createWebHistory(),
   routes: [
     {
       path: '/product',
-      name: 'product',
       component: ProductsList,
     },
     {
       path: '/product/:id',
-      name: 'product',
       component: ProductDetail,
       props: true,
     },

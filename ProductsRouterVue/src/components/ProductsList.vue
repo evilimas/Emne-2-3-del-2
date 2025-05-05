@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router';
 import { products } from '../products';
 </script>
 
@@ -7,9 +8,9 @@ import { products } from '../products';
     <h1>ProductList</h1>
     <ul>
       <li v-for="product in products" :key="product.id">
-        <router-link to="`/product/${product.id}`">{{
+        <RouterLink :to="`/product/${product.id}`">{{
           product.name
-        }}</router-link>
+        }}</RouterLink>
       </li>
     </ul>
   </div>
