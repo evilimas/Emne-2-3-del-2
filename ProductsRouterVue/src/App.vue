@@ -3,7 +3,7 @@
 <template>
   <div>
     <nav>
-      <RouterLink to="/product">Products</RouterLink>
+      <RouterLink to="/products">Products</RouterLink>
       <RouterLink to="/product/:id"></RouterLink>
     </nav>
     <RouterView />

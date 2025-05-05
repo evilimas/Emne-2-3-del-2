@@ -16,4 +16,12 @@ import { products } from '../products';
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+ul {
+  list-style: none;
+  text-align: left;
+}
+li {
+  margin-top: 0.6em;
+}
+</style>
