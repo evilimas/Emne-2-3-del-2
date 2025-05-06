@@ -28,18 +28,13 @@ export const products: Product[] = [
   },
 ];
 
-export function getNextProductId(currentId: number): number | undefined {
-  const currentIndex = products.findIndex(
-    (product) => product.id === currentId
-  );
-  if (currentIndex !== -1 && currentIndex + 1 < products.length) {
-    return products[currentIndex + 1].id;
-  }
-  return undefined;
+export function getProductById(id: number): Product | null {
+  return products.find((p) => p.id === id) ?? null;
 }
 
-export function goToNextProduct(currectId: number) {}
-
-export function getProductById(id: number): Product | undefined {
-  return products.find((p) => p.id === id);
+export function getNextProductId(id: number | null) {
+  if (id == null || id == products[products.length - 1].id)
+    return products[0].id;
+  const index = products.findIndex((p) => p.id == id);
+  return index == -1 ? products[0].id : products[index + 1].id;
 }

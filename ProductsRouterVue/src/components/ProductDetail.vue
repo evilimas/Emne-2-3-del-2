@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { getProductById } from '../products';
+import { getNextProductId, getProductById } from '../products';
 import type { Product } from '../products';
 
 const props = defineProps<{ id: string }>();
@@ -23,16 +23,20 @@ const product = ref<Product | null>();
 // const id = computed(()=> parseInt)
 
 watch(
-  () => parseInt(props.id),
+  (): number => parseInt(props.id),
   (id: number) => {
-    product.value = getProductById(id);
+    if (id != null) {
+      product.value = getProductById(id);
+    }
   },
   { immediate: true }
 );
 
 function goToNextProduct(): void {
-  const nextId = product.value.id + 1;
-  router.push({ name: 'product', params: { id: nextId } });
+  router.push({
+    name: 'product',
+    params: { id: getNextProductId(product.value!.id) },
+  });
 }
 </script>
 
