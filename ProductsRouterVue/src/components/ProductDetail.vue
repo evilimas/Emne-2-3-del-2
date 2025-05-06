@@ -19,12 +19,13 @@ import type { Product } from '../products';
 
 const props = defineProps<{ id: string }>();
 const router = useRouter();
-const product = ref<Product | undefined>();
+const product = ref<Product | null>();
+// const id = computed(()=> parseInt)
 
 watch(
-  () => props.id,
-  (id) => {
-    product.value = getProductById(parseInt(id as string));
+  () => parseInt(props.id),
+  (id: number) => {
+    product.value = getProductById(id);
   },
   { immediate: true }
 );
